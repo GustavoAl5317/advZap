@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdvZap — Gestão Jurídica com IA pelo WhatsApp</title>
   <meta name="description" content="AdvZap é o sistema de gestão jurídica que integra WhatsApp, IA e CRM em uma só plataforma. Processos, clientes, leads e agenda — tudo conectado." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚖️</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -565,6 +566,9 @@
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(149,48,78,.25);
     }
+    @media(max-width:768px){
+      .hero-video-frame video { max-height: 240px; }
+    }
 
     /* ─── DEMO DJEN ──────────────────────────────── */
     .djen-section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,.05); }
@@ -828,7 +832,7 @@
             <div class="hero-mockup-dot" style="background:#27c93f"></div>
             <span style="font-size:11px;color:rgba(255,255,255,.4);margin-left:6px;">AdvZap — Apresentação</span>
           </div>
-          <video autoplay muted loop playsinline style="width:100%;display:block;">
+          <video autoplay muted loop playsinline webkit-playsinline style="width:100%;display:block;max-height:420px;object-fit:cover;">
             <source src="img/videoApresentacao.mp4" type="video/mp4" />
           </video>
         </div>
