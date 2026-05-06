@@ -589,7 +589,7 @@
       min-width: 100%; flex-shrink: 0;
     }
     .hero-carousel-slide img {
-      width: 100%; height: 220px; object-fit: cover; object-position: top; display: block;
+      width: 100%; height: auto; display: block;
     }
     .hero-carousel-dots {
       display: flex; justify-content: center; gap: 8px;
@@ -1546,7 +1546,7 @@
         if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
       }, {passive:true});
       // auto-avança
-      setInterval(() => goTo(cur + 1), 3000);
+      setInterval(() => goTo(cur + 1), 1500);
     })();
 
     // Hero video: tenta autoplay, se falhar mostra botão de play
