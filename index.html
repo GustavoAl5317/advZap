@@ -566,8 +566,8 @@
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(149,48,78,.25);
     }
-    @media(max-width:768px){
-      .hero-video-frame video { max-height: 240px; }
+    .hero-video-frame video {
+      width: 100%; height: auto; display: block;
     }
 
     /* ─── DEMO DJEN ──────────────────────────────── */
@@ -832,7 +832,7 @@
             <div class="hero-mockup-dot" style="background:#27c93f"></div>
             <span style="font-size:11px;color:rgba(255,255,255,.4);margin-left:6px;">AdvZap — Apresentação</span>
           </div>
-          <video autoplay muted loop playsinline webkit-playsinline style="width:100%;display:block;max-height:420px;object-fit:cover;">
+          <video autoplay muted loop playsinline webkit-playsinline>
             <source src="img/videoApresentacao.mp4" type="video/mp4" />
           </video>
         </div>
