@@ -4,7 +4,9 @@
       "Bash(python3 -c ' *)",
       "WebFetch(domain:comunicaapi.pje.jus.br)",
       "Bash(curl -s -L \"https://comunicaapi.pje.jus.br/swagger/v1/swagger.json\" -H \"Accept: application/json\")",
-      "Bash(curl -s -L \"https://comunicaapi.pje.jus.br/api/v1/comunicacao?numeroOab=123456&siglaUf=SP&dataDisponibilizacaoInicio=2026-01-01&dataDisponibilizacaoFim=2026-01-31\" -H \"Accept: application/json\")"
+      "Bash(curl -s -L \"https://comunicaapi.pje.jus.br/api/v1/comunicacao?numeroOab=123456&siglaUf=SP&dataDisponibilizacaoInicio=2026-01-01&dataDisponibilizacaoFim=2026-01-31\" -H \"Accept: application/json\")",
+      "Bash(ffmpeg -version)",
+      "Bash(where ffmpeg *)"
     ]
   }
 }
