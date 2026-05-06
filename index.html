@@ -575,31 +575,6 @@
       .hero-mobile-only  { display: block; }
     }
 
-    /* ─── HERO CAROUSEL ──────────────────────────── */
-    .hero-carousel {
-      border-radius: 16px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(149,48,78,.25);
-      position: relative;
-    }
-    .hero-carousel-track {
-      display: flex; transition: transform .4s ease;
-    }
-    .hero-carousel-slide {
-      min-width: 100%; flex-shrink: 0;
-    }
-    .hero-carousel-slide img {
-      width: 100%; height: auto; display: block;
-    }
-    .hero-carousel-dots {
-      display: flex; justify-content: center; gap: 8px;
-      padding: 12px 0; background: rgba(0,0,0,.4);
-    }
-    .hero-carousel-dots span {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,.3); cursor: pointer; transition: background .2s;
-    }
-    .hero-carousel-dots span.active { background: var(--wine-mid); }
 
     /* ─── DEMO DJEN ──────────────────────────────── */
     .djen-section { padding: 72px 0; border-top: 1px solid rgba(255,255,255,.05); }
@@ -868,17 +843,9 @@
             <source src="img/videoApresentacao.mp4" type="video/mp4" />
           </video>
         </div>
-        <!-- Mobile: carousel -->
-        <div class="hero-carousel hero-mobile-only">
-          <div class="hero-carousel-track" id="heroCarouselTrack">
-            <div class="hero-carousel-slide"><img src="img/dashboard.png" alt="Dashboard" /></div>
-            <div class="hero-carousel-slide"><img src="img/triagem.png" alt="Triagem" /></div>
-            <div class="hero-carousel-slide"><img src="img/crm.png" alt="CRM" /></div>
-            <div class="hero-carousel-slide"><img src="img/conversas.png" alt="Conversas" /></div>
-            <div class="hero-carousel-slide"><img src="img/agenda.png" alt="Agenda" /></div>
-            <div class="hero-carousel-slide"><img src="img/clientes.png" alt="Clientes" /></div>
-          </div>
-          <div class="hero-carousel-dots" id="heroCarouselDots"></div>
+        <!-- Mobile: dashboard screenshot -->
+        <div class="hero-mobile-only hero-video-frame">
+          <img src="img/dashboard.png" alt="Dashboard AdvZap" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
     </div>
@@ -1519,37 +1486,7 @@
     hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
     function closeMenu() { navMobile.classList.remove('open'); }
 
-    // Hero carousel (mobile)
-    (function(){
-      const track = document.getElementById('heroCarouselTrack');
-      const dotsEl = document.getElementById('heroCarouselDots');
-      if (!track) return;
-      const slides = track.querySelectorAll('.hero-carousel-slide');
-      let cur = 0;
-      // cria dots
-      slides.forEach((_, i) => {
-        const d = document.createElement('span');
-        if (i === 0) d.classList.add('active');
-        d.addEventListener('click', () => goTo(i));
-        dotsEl.appendChild(d);
-      });
-      function goTo(n){
-        cur = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${cur * 100}%)`;
-        dotsEl.querySelectorAll('span').forEach((d,i) => d.classList.toggle('active', i === cur));
-      }
-      // swipe touch
-      let startX = 0;
-      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-      track.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
-      }, {passive:true});
-      // auto-avança
-      setInterval(() => goTo(cur + 1), 1500);
-    })();
-
-    // Hero video: tenta autoplay, se falhar mostra botão de play
+// Hero video: tenta autoplay, se falhar mostra botão de play
     (function(){
       const vid = document.getElementById('heroVideo');
       if (!vid) return;
