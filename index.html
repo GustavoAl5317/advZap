@@ -832,7 +832,7 @@
             <div class="hero-mockup-dot" style="background:#27c93f"></div>
             <span style="font-size:11px;color:rgba(255,255,255,.4);margin-left:6px;">AdvZap — Apresentação</span>
           </div>
-          <video autoplay muted loop playsinline webkit-playsinline>
+          <video id="heroVideo" muted loop playsinline webkit-playsinline poster="img/dashboard.png" style="width:100%;display:block;cursor:pointer;" onclick="this.play();this.controls=true;">
             <source src="img/videoApresentacao.mp4" type="video/mp4" />
           </video>
         </div>
@@ -1474,6 +1474,30 @@
     const navMobile = document.getElementById('navMobile');
     hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
     function closeMenu() { navMobile.classList.remove('open'); }
+
+    // Hero video: tenta autoplay, se falhar mostra botão de play
+    (function(){
+      const vid = document.getElementById('heroVideo');
+      if (!vid) return;
+      const wrap = vid.closest('.hero-video-frame');
+
+      // Cria botão de play overlay
+      const btn = document.createElement('button');
+      btn.innerHTML = '▶';
+      btn.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(149,48,78,.85);color:#fff;border:none;border-radius:50%;width:72px;height:72px;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.5);transition:opacity .2s;';
+      wrap.style.position = 'relative';
+
+      function hideBtn(){ btn.style.display = 'none'; }
+      btn.addEventListener('click', () => { vid.play(); vid.controls = true; hideBtn(); });
+      vid.addEventListener('play', hideBtn);
+
+      vid.play().then(() => {
+        // autoplay funcionou (desktop) — não mostra o botão
+      }).catch(() => {
+        // autoplay bloqueado (iOS/mobile) — mostra botão
+        wrap.appendChild(btn);
+      });
+    })();
   </script>
 
 </body>
